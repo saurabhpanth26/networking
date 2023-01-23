@@ -1,5 +1,5 @@
 resource "aws_vpc" "main-vpc" {
-   cidr_block = "10.100.0.0/16"
+   cidr_block = var.vpc_cidr_block
    enable_dns_hostnames = "true"
    tags = {
        Name = "john.07-vpc"
@@ -10,10 +10,10 @@ resource "aws_vpc" "main-vpc" {
 
 resource "aws_subnet" "main-subnet" {
    vpc_id     = aws_vpc.main-vpc.id
-   cidr_block = "10.100.0.0/24"
+   cidr_block = var.subnet-1_cidr_block
 
    tags = {
-       Name = "john.07-subnet1"
+       Name = var.subnet_name
    }
 }
 
@@ -22,7 +22,7 @@ resource "aws_internet_gateway" "igw" {
      vpc_id = aws_vpc.main-vpc.id
 
     tags = {
-       Name = "john.07-igw"
+       Name = var.igw_name
     }
 }
 
@@ -36,7 +36,7 @@ resource "aws_route_table" "my-route-table" {
   }
 
   tags = {
-    Name = "john.07-route-table"
+    Name = var.route_table_name
   }
 }
 
