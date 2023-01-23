@@ -6,3 +6,16 @@ resource "aws_vpc" "main-vpc" {
     }
 }
 
+
+
+resource "aws_subnet" "main-subnet" {
+   vpc_id     = aws_vpc.main-vpc.id
+   cidr_block = "10.100.0.0/24"
+
+   tags = {
+       Name = "john.07-subnet1"
+   }
+}
+
+
+
