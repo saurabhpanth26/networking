@@ -30,3 +30,10 @@ output "key_name" {
 
 
 
+output "security_group_id_array" {
+  value = aws_security_group.open_port.*.id
+}
+
+
+
+
